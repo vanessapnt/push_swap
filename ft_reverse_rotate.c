@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 12:01:54 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/11 13:47:18 by varodrig         ###   ########.fr       */
+/*   Created: 2024/09/11 12:08:27 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/11 13:49:10 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ft_rotate(t_stack_node **head)
+static void	ft_reverse_rotate(t_stack_node **head)
 {
 	t_stack_node	*first_node;
 	t_stack_node	*last_node;
@@ -21,26 +21,26 @@ static void	ft_rotate(t_stack_node **head)
 	{
 		first_node = *head;
 		last_node = find_last_node(*head);
-		last_node->next = first_node;
-		*head = first_node->next;
-		(*head)->prev = NULL;
-		first_node->next = NULL;
 		first_node->prev = last_node;
+		last_node->prev->next = NULL;
+		last_node->next = first_node;
+		last_node->prev = NULL;
+		*head = last_node;
 	}
 }
 
-void	ft_ra(t_stack_node **a)
+void	ft_rra(t_stack_node **a)
 {
-	ft_rotate(a);
+	ft_reverse_rotate(a);
 }
 
-void	ft_rb(t_stack_node **b)
+void	ft_rrb(t_stack_node **b)
 {
-	ft_rotate(b);
+	ft_reverse_rotate(b);
 }
 
-void	ft_rr(t_stack_node **a, t_stack_node **b)
+void	ft_rrr(t_stack_node **a, t_stack_node **b)
 {
-	ft_rotate(a);
-	ft_rotate(b);
+	ft_reverse_rotate(a);
+	ft_reverse_rotate(b);
 }

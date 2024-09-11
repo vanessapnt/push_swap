@@ -1,29 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 12:00:33 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/11 13:47:12 by varodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-static  void    ft_push(stack_node **dest, stack_node **src)
+static void	ft_push(t_stack_node **dest, t_stack_node **src)
 {
-    if (dest && src && (*src))
-    {
-        stack_node *top_dest = *dest;
-        stack_node *top_src = *src;
+	t_stack_node	*top_dest;
+	t_stack_node	*top_src;
 
-        if (top_src->next)
-            top_src->next->prev = NULL;
-        *src = top_src->next;
-        top_src->next = top_dest;
-        if (top_dest)
-            top_dest->prev = top_src;
-
-        *dest = top_src;
-    }
-}
-void    ft_pa(stack_node **a, stack_node **b)
-{
-    ft_push(a, b);
+	if (dest && src && (*src))
+	{
+		top_dest = *dest;
+		top_src = *src;
+		if (top_src->next)
+			top_src->next->prev = NULL;
+		*src = top_src->next;
+		top_src->next = top_dest;
+		if (top_dest)
+			top_dest->prev = top_src;
+		*dest = top_src;
+	}
 }
 
-void    ft_pb(stack_node **b, stack_node **a)
+void	ft_pa(t_stack_node **a, t_stack_node **b)
 {
-    ft_push(b, a);
+	ft_push(a, b);
+}
+
+void	ft_pb(t_stack_node **b, t_stack_node **a)
+{
+	ft_push(b, a);
 }

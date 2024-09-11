@@ -1,22 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/11 13:47:29 by varodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	stack_node *a;
-	stack_node *b;
-	char **split_result;
+	t_stack_node	*a;
+	t_stack_node	*b;
+	char		**split_result;
+	int			i;
 
 	a = NULL;
 	b = NULL;
-	if(argc == 1 || argc == 2 && !argv[1][0]) //no arg || ""
-		return(1);
+	if (argc == 1 || argc == 2 && !argv[1][0])
+		return (1);
 	else if (argc == 2)
 	{
 		split_result = ft_split(argv[1], ' ');
 		if (!split_result)
-			init_stack_a(&a, split_result);
-		while (*split_result++)
-			free(split_result);
+			exit(1);
+		init_stack_a(&a, split_result);
+		i = 0;
+		while (split_result[i])
+			i++;
+		while (--i >= 0)
+			free(split_result[i]);
 		free(split_result);
 	}
 	else
@@ -31,17 +48,17 @@ int main(int argc, char **argv)
 			sort_stacks(&a, &b);
 	}
 	free_stack(&a);
-	return(0);
+	return (0);
 }
 
-void	ft_free_stack(stack_node	**head)
+void	ft_free_stack(t_stack_node	**head)
 {
-	stack_node *curr;
+	t_stack_node	*curr;
 
-	if(*head == NULL)
+	if (*head == NULL)
 		return;
 	curr = *head;
-	while(curr->next)
+	while (curr->next)
 	{
 		curr = curr->next;
 		free(curr->prev);
@@ -50,7 +67,7 @@ void	ft_free_stack(stack_node	**head)
 	*head = NULL;
 }
 
-void	free_errors(stack_node **a)
+void	free_errors(t_stack_node **a)
 {
 	ft_free_stack(a);
 	printf("Error\n");
@@ -61,41 +78,72 @@ int	error_syntax(char *s)
 {
 	//first char must be '-', '+' or digit
 	if (!(*s == '-' || *s == '+' || (*s >= '0' && *s <= '9')))
-		return(1);
+		return (1);
 	//second char must be digit
 	if ((*s == '-' || *s == '+') && !(s[1] >= '0' && s[1] <= '9'))
-		return(1);
+		return (1);
 	//only digits following
-	while(++*s)
+	while (++*s)
 	{
-		if(!(s[1] >= '0' && s[1] <= '9'))
-			return(1);
+		if (!(s[1] >= '0' && s[1] <= '9'))
+			return (1);
 	}
-	return(0);
+	return (0);
 }
 
-int	error_double(stack_node *a, int	nb)
+int	error_double(t_stack_node *a, int nb)
 {
+	t_stack_node	*curr;
 
+	curr = a;
+	while (curr)
+	{
+		if (curr->x == nb)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
 }
 
-void	add_node(stack_node **a, int nb)
+void	add_node(t_stack_node **a, int nb)
 {
+	t_stack_node	*new_node;
 
+	new_node->x = nb;
+	new_node->prev = NULL;
+	if (*a)
+	{
+		new_node->next = *a;
+		(*a)->prev = new_node;
+	}
+	else
+		new_node->next = NULL;
+	*a = new_node;
 }
 
-int	stack_sorted(stack_node **a)
+int	stack_sorted(t_stack_node **a)
 {
+	t_stack_node	*curr;
 
+	if (*a == NULL)
+		return (1);
+	curr = *a;
+	while (curr->next)
+	{
+		if (curr->next->x < curr->next)
+			return (0);
+		curr = curr->next;
+	}
+	return (1);
 }
 
-void	init_stack_a(stack_node **a, char **argv)
+void	init_stack_a(t_stack_node **a, char **argv)
 {
-	int	i;
+	int		i;
 	long	nb;
 
 	i = 0;
-	while(argv[i])
+	while (argv[i])
 	{
 		if (error_syntax(argv[i]))
 			free_errors(a);
