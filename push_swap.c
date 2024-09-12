@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/11 13:47:29 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/12 14:32:13 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,13 @@ void	add_node(t_stack_node **a, int nb)
 	*a = new_node;
 }
 
-int	stack_sorted(t_stack_node **a)
+int	stack_sorted(t_stack_node *a)
 {
 	t_stack_node	*curr;
 
-	if (*a == NULL)
+	if (a == NULL)
 		return (1);
-	curr = *a;
+	curr = a;
 	while (curr->next)
 	{
 		if (curr->next->x < curr->next)
@@ -156,3 +156,5 @@ void	init_stack_a(t_stack_node **a, char **argv)
 		i++;
 	}
 }
+
+//sort_stacks

@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/11 13:48:55 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:56:35 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 	#include <stdlib.h>
 	#include <stdio.h>
 	#include <limits.h>
+	#include <stdbool.h>
 
 typedef struct t_stack_node{
 	int					x;
 	struct t_stack_node	*prev;
 	struct t_stack_node	*next;
+	int					index;
+	bool				above_median;
+	struct t_stack_node	*target;
+	int					push_cost;
 }t_stack_node;
 
 void	ft_sa(t_stack_node **a);
@@ -47,6 +52,7 @@ t_stack_node	*find_max_node(t_stack_node *head);
 t_stack_node	*find_min_node(t_stack_node *head);
 t_stack_node	*find_last_node(t_stack_node *head);
 char	**ft_split(char *s, char c);
+int		stack_sorted(t_stack_node **a);
 
 // void	ft_swap(t_stack_node **head);
 // void	ft_push(t_stack_node **dest, t_stack_node **src);
