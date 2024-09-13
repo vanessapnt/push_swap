@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tool_box.c                                         :+:      :+:    :+:   */
+/*   tool_box_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 13:36:31 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/12 18:55:41 by varodrig         ###   ########.fr       */
+/*   Created: 2024/09/13 13:55:09 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/13 14:26:25 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ t_stack_node	*find_min_node(t_stack_node *head)
 	}
 	return (min);
 }
+t_stack_node	*find_last_node(t_stack_node *head)
+{
+	t_stack_node	*curr;
+
+	curr = head;
+	if (curr)
+	{
+		while (curr->next)
+			curr = curr->next;
+	}
+	return (curr);
+}
 
 int	ft_stack_length(t_stack_node *head)
 {
@@ -57,19 +69,6 @@ int	ft_stack_length(t_stack_node *head)
 		len++;
 	}
 	return (len);
-}
-
-t_stack_node	*find_last_node(t_stack_node *head)
-{
-	t_stack_node	*curr;
-
-	curr = head;
-	if (curr)
-	{
-		while (curr->next)
-			curr = curr->next;
-	}
-	return (curr);
 }
 
 void	ft_print_stack(t_stack_node *a)

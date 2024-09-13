@@ -1,73 +1,93 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/13 13:51:53 by varodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int main(){
-
-	t_stack_node *first = malloc(sizeof(t_stack_node));
-	if (first == NULL)
-		return(1);
-	t_stack_node *second = malloc(sizeof(t_stack_node));
-	if (second == NULL)
-		return(1);
-	t_stack_node *third = malloc(sizeof(t_stack_node));
-	if (third == NULL)
-		return(1);
-	t_stack_node *a = first;
-
-	first->x = 1;
-	first->prev = NULL;
-	first->next = second;
-
-	second->x = 3;
-	second->prev = first;
-	second->next = third;
-
-	third->x = 2;
-	third->prev = second;
-	third->next = NULL;
-
-	t_stack_node *fourth = malloc(sizeof(t_stack_node));
-	if (fourth == NULL)
-		return(1);
-	t_stack_node *fifth = malloc(sizeof(t_stack_node));
-	if (fifth == NULL)
-		return(1);
-	t_stack_node *sixth = malloc(sizeof(t_stack_node));
-	if (sixth == NULL)
-		return(1);
-	t_stack_node *b = fourth;
-
-	fourth->x = 4;
-	fourth->prev = NULL;
-	fourth->next =fifth;
-
-	fifth->x = 5;
-	fifth->prev = fourth;
-	fifth->next = sixth;
-
-	sixth->x = 6;
-	sixth->prev =fifth;
-	sixth->next = NULL;
-
-	printf("stack a :\n");
-	ft_print_stack(a);
-	printf("stack b :\n");
-	ft_print_stack(b);
-
-	//ft_rrr(&a, &b);
-
-	printf("new stack a :\n");
-	ft_print_stack(a);
-	printf("stack b :\n");
-	ft_print_stack(b);
-
-	printf("length of stack is %d\n", ft_stack_length(a));
-
-	printf("min of stack a is :%d\n", ((find_min_node(a))->x));
-	printf("max of stack a is :%d\n", ((find_max_node(a))->x));
-
-	//printf("last node of stack b is :%d\n", ((find_last_node(b))->x));
-
-//pas ouber de free avec une fonction
-	return(0);
+static int	error_syntax(char *s)
+{
+	// first char must be '-', '+' or digit
+	if (!(*s == '-' || *s == '+' || (*s >= '0' && *s <= '9')))
+		return (1);
+	// second char must be digit
+	if ((*s == '-' || *s == '+') && !(s[1] >= '0' && s[1] <= '9'))
+		return (1);
+	// only digits following
+	while (++*s)
+	{
+		if (!(s[1] >= '0' && s[1] <= '9'))
+			return (1);
+	}
+	return (0);
 }
 
+static int	error_double(t_stack_node *a, int nb)
+{
+	t_stack_node	*curr;
+
+	curr = a;
+	while (curr)
+	{
+		if (curr->x == nb)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
+}
+
+static void	free_errors(t_stack_node **a)
+{
+	ft_free_stack(a);
+	printf("Error\n");
+	exit(1);
+}
+
+static long	ft_atol(char *str)
+{
+	long	nb;
+	long	even;
+
+	nb = 0;
+	even = 1;
+	if (*str == '-')
+	{
+		even = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str)
+	{
+		nb = nb * 10 + (*str++ - '0');
+	}
+	nb = nb * even;
+	return (nb);
+}
+
+void	init_stack_a(t_stack_node **a, char **argv)
+{
+	int i;
+	long nb;
+
+	i = 0;
+	while (argv[i])
+	{
+		if (error_syntax(argv[i]))
+			free_errors(a);
+		nb = ft_atol(argv[i]);
+		if (nb > INT_MAX || nb < INT_MIN)
+			free_errors(a);
+		if (error_double(*a, (int)nb))
+			free_errors(a);
+		add_node(a, (int)nb);
+		i++;
+	}
+}

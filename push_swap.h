@@ -6,19 +6,20 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/12 16:56:35 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:49:20 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-	#include <stdlib.h>
-	#include <stdio.h>
-	#include <limits.h>
-	#include <stdbool.h>
+# include <limits.h>
+# include <stdbool.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-typedef struct t_stack_node{
+typedef struct t_stack_node
+{
 	int					x;
 	struct t_stack_node	*prev;
 	struct t_stack_node	*next;
@@ -26,36 +27,55 @@ typedef struct t_stack_node{
 	bool				above_median;
 	struct t_stack_node	*target;
 	int					push_cost;
-}t_stack_node;
+}						t_stack_node;
 
-void	ft_sa(t_stack_node **a);
-void	ft_sb(t_stack_node **b);
-void	ft_ss(t_stack_node **a, t_stack_node **b);
+// Commands
+void					ft_sa(t_stack_node **a);
+void					ft_sb(t_stack_node **b);
+void					ft_ss(t_stack_node **a, t_stack_node **b);
+void					ft_pa(t_stack_node **a, t_stack_node **b);
+void					ft_pb(t_stack_node **b, t_stack_node **a);
+void					ft_ra(t_stack_node **a);
+void					ft_rb(t_stack_node **b);
+void					ft_rr(t_stack_node **a, t_stack_node **b);
+void					ft_rra(t_stack_node **a);
+void					ft_rrb(t_stack_node **b);
+void					ft_rrr(t_stack_node **a, t_stack_node **b);
 
-void	ft_pa(t_stack_node **a, t_stack_node **b);
-void	ft_pb(t_stack_node **b, t_stack_node **a);
+// Push_Swap structure
+char					**ft_split(char *s, char c);
+void					init_stack_a(t_stack_node **a, char **argv);
+int						stack_sorted(t_stack_node *a);
+int						ft_stack_length(t_stack_node *head);
+void					ft_tiny_sort(t_stack_node **a);
+void					sort_stacks(t_stack_node **a, t_stack_node **b);
+// void free_stack(t_stack_node **a);
 
-void	ft_ra(t_stack_node **a);
-void	ft_rb(t_stack_node **b);
-void	ft_rr(t_stack_node **a, t_stack_node **b);
+// Tool Box
+t_stack_node			*find_max_node(t_stack_node *head);
+t_stack_node			*find_min_node(t_stack_node *head);
+t_stack_node			*find_last_node(t_stack_node *head);
+int						ft_stack_length(t_stack_node *head);
+void					ft_print_stack(t_stack_node *a);
 
-void	ft_rra(t_stack_node **a);
-void	ft_rrb(t_stack_node **b);
-void	ft_rrr(t_stack_node **a, t_stack_node **b);
+int						stack_sorted(t_stack_node *a);
+void					ft_free_stack(t_stack_node **head);
+void					add_node(t_stack_node **a, int nb);
+void					min_on_top(t_stack_node **a);
+void					prep_for_push(t_stack_node **head,
+							t_stack_node *cheapest_node, char stack_name);
 
-void	ft_tiny_sort(t_stack_node **a);
+// Set members of the nodes
+t_stack_node			*find_cheapest(t_stack_node *a);
+void					set_target_a(t_stack_node *a, t_stack_node *b);
+void					set_target_b(t_stack_node *a, t_stack_node *b);
+void					set_position(t_stack_node *head);
+void					set_cost(t_stack_node *a, t_stack_node *b);
 
-//mettre tout ca en static et a la place sa, sb, ss...
-void	ft_print_stack(t_stack_node *a);
-int		ft_stack_length(t_stack_node *head);
-t_stack_node	*find_max_node(t_stack_node *head);
-t_stack_node	*find_min_node(t_stack_node *head);
-t_stack_node	*find_last_node(t_stack_node *head);
-char	**ft_split(char *s, char c);
-int		stack_sorted(t_stack_node **a);
-
-// void	ft_swap(t_stack_node **head);
-// void	ft_push(t_stack_node **dest, t_stack_node **src);
-// void	ft_rotate(t_stack_node **head);
-// void	ft_reverse_rotate(t_stack_node **head);
+// Sort stacks
+void					init_members_a(t_stack_node *a, t_stack_node *b);
+void					init_members_b(t_stack_node *a, t_stack_node *b);
+void					push_a_to_b(t_stack_node **a, t_stack_node **b);
+void					push_b_to_a(t_stack_node **a, t_stack_node **b);
+void					sort_stacks(t_stack_node **a, t_stack_node **b);
 #endif

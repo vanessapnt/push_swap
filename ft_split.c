@@ -6,13 +6,13 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 10:12:40 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/11 11:58:11 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:53:35 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static	int	count_words(char *s, char c)
+static int	count_words(char *s, char c)
 {
 	int	outside_word;
 	int	count;
@@ -36,7 +36,7 @@ static	int	count_words(char *s, char c)
 	return (count);
 }
 
-static	char	*get_next_word(char *s, char c)
+static char	*get_next_word(char *s, char c)
 {
 	static int	cursor;
 	int			i;
@@ -85,7 +85,7 @@ char	**ft_split(char *s, char c)
 	result_string[i] = NULL;
 	return (result_string);
 }
-
+/*
 int	main(void)
 {
 	char	*str;
@@ -105,3 +105,4 @@ int	main(void)
 	free(split_res);
 	return (0);
 }
+*/
