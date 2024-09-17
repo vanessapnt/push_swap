@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 13:57:35 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 10:35:39 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || argc == 2 && !argv[1][0])
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
 	{
@@ -38,15 +38,15 @@ int	main(int argc, char **argv)
 	}
 	else
 		init_stack_a(&a, argv + 1);
-	if (!ft_stack_sorted(a))
+	if (!stack_sorted(a))
 	{
 		if (ft_stack_length(a) == 2)
-			sa(&a);
+			ft_sa(&a);
 		else if (ft_stack_length(a) == 3)
 			ft_tiny_sort(&a);
 		else
 			sort_stacks(&a, &b);
 	}
-	free_stack(&a);
+	ft_free_stack(&a);
 	return (0);
 }

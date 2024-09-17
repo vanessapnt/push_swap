@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 13:51:53 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:05:51 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ static int	error_syntax(char *s)
 	if ((*s == '-' || *s == '+') && !(s[1] >= '0' && s[1] <= '9'))
 		return (1);
 	// only digits following
-	while (++*s)
+	while (*s)
 	{
-		if (!(s[1] >= '0' && s[1] <= '9'))
+		if (!(*s >= '0' && *s <= '9'))
 			return (1);
+		s++;
 	}
 	return (0);
 }

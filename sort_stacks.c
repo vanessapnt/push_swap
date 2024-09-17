@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:08:41 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 14:37:40 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:33:47 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_members_a(t_stack_node *a, t_stack_node *b)
 {
 	set_position(a);
 	set_position(b);
-	set_target(a, b);
+	set_target_a(a, b);
 	set_cost(a, b);
 }
 
@@ -39,14 +39,14 @@ void	push_a_to_b(t_stack_node **a, t_stack_node **b)
 		reverse_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node, 'b');
-	pb(b, a);
+	ft_pb(b, a);
 }
 
 void	push_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	//b is already ready
 	prep_for_push(a, (*b)->target, 'a');
-	pa(a, b);
+	ft_pa(a, b);
 }
 
 void	sort_stacks(t_stack_node **a, t_stack_node **b)

@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:08:27 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/12 18:10:26 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 11:42:18 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,25 @@ static void	ft_reverse_rotate(t_stack_node **head)
 void	ft_rra(t_stack_node **a)
 {
 	ft_reverse_rotate(a);
-	printf("rra");
+	printf("rra\n");
 }
 
 void	ft_rrb(t_stack_node **b)
 {
 	ft_reverse_rotate(b);
-	printf("rrb");
+	printf("rrb\n");
 }
 
 void	ft_rrr(t_stack_node **a, t_stack_node **b)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
-	printf("rrr");
+	printf("rrr\n");
+}
+
+void	reverse_rotate_both(t_stack_node **a, t_stack_node **b,
+		t_stack_node *cheapest_node)
+{
+	while (*a != cheapest_node && *b != cheapest_node->target)
+		ft_rrr(a, b);
 }

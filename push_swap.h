@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 14:49:20 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:57:39 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,13 @@ void					ft_pb(t_stack_node **b, t_stack_node **a);
 void					ft_ra(t_stack_node **a);
 void					ft_rb(t_stack_node **b);
 void					ft_rr(t_stack_node **a, t_stack_node **b);
+void					rotate_both(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest_node);
 void					ft_rra(t_stack_node **a);
 void					ft_rrb(t_stack_node **b);
 void					ft_rrr(t_stack_node **a, t_stack_node **b);
+void					reverse_rotate_both(t_stack_node **a, t_stack_node **b,
+							t_stack_node *cheapest_node);
 
 // Push_Swap structure
 char					**ft_split(char *s, char c);

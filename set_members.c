@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:38:06 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 14:38:08 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:36:34 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,24 @@ void	set_target_a(t_stack_node *a, t_stack_node *b)
 	t_stack_node	*reset_b;
 	t_stack_node	*target;
 	t_stack_node	*max;
+	t_stack_node	*min;
 
 	reset_b = b;
 	if (!b)
 		return ;
 	max = find_max_node(b);
+	min = find_min_node(b);
 	while (a)
 	{
-		target = max;
+		target = min;
 		while (b)
 		{
-			if ((b->x > target->x) && (b->x <= a->x))
+			if ((b->x < a->x) && (b->x > target->x))
 				target = b;
 			b = b->next;
 		}
+		if (target == min)
+			target = max;
 		b = reset_b;
 		a->target = target;
 		a = a->next;
@@ -53,6 +57,31 @@ void	set_target_a(t_stack_node *a, t_stack_node *b)
 
 void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
+	t_stack_node	*reset_a;
+	t_stack_node	*target;
+	t_stack_node	*min;
+	t_stack_node	*max;
+
+	reset_a = a;
+	if (!a)
+		return ;
+	min = find_min_node(a);
+	max = find_max_node(a);
+	while (b)
+	{
+		target = max;
+		while (a)
+		{
+			if ((a->x > b->x) && (a->x < target->x))
+				target = a;
+			a = a->next;
+		}
+		if (target == max)
+			target = min;
+		a = reset_a;
+		b->target = target;
+		b = b->next;
+	}
 }
 
 void	set_position(t_stack_node *head)
@@ -76,7 +105,6 @@ void	set_position(t_stack_node *head)
 
 void	set_cost(t_stack_node *a, t_stack_node *b)
 {
-	int	price;
 	int	len_a;
 	int	len_b;
 
