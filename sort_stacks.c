@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:08:41 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 13:33:47 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:50:16 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	push_a_to_b(t_stack_node **a, t_stack_node **b)
 		&& !(cheapest_node->target->above_median))
 		reverse_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
-	prep_for_push(b, cheapest_node, 'b');
+	prep_for_push(b, cheapest_node->target, 'b');
 	ft_pb(b, a);
 }
 

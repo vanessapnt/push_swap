@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 11:05:51 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:57:14 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ static int	error_syntax(char *s)
 	// second char must be digit
 	if ((*s == '-' || *s == '+') && !(s[1] >= '0' && s[1] <= '9'))
 		return (1);
+	if (*s == '-' || *s == '+')
+		s++;
 	// only digits following
 	while (*s)
 	{
+
 		if (!(*s >= '0' && *s <= '9'))
 			return (1);
 		s++;
@@ -75,8 +78,8 @@ static long	ft_atol(char *str)
 
 void	init_stack_a(t_stack_node **a, char **argv)
 {
-	int i;
-	long nb;
+	int		i;
+	long	nb;
 
 	i = 0;
 	while (argv[i])

@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 10:35:39 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:38:12 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 		if (!split_result)
 			exit(1);
 		init_stack_a(&a, split_result);
+		//free
 		i = 0;
 		while (split_result[i])
 			i++;
