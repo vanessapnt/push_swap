@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:38:06 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 09:36:34 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/21 13:44:43 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	set_target_a(t_stack_node *a, t_stack_node *b)
 				target = b;
 			b = b->next;
 		}
-		if (target == min)
+		if (target->x > a->x)
 			target = max;
 		b = reset_b;
 		a->target = target;
@@ -76,7 +76,7 @@ void	set_target_b(t_stack_node *a, t_stack_node *b)
 				target = a;
 			a = a->next;
 		}
-		if (target == max)
+		if (target->x < b->x)
 			target = min;
 		a = reset_a;
 		b->target = target;

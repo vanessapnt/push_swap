@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:54:55 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 14:13:41 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/21 14:10:48 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	add_node(t_stack_node **a, int nb)
 	else
 		*a = new_node;
 }
+
 void	min_on_top(t_stack_node **a)
 {
 	t_stack_node	*min;
@@ -69,6 +70,7 @@ void	min_on_top(t_stack_node **a)
 	while (*a != min)
 		ft_rra(a);
 }
+
 void	prep_for_push(t_stack_node **head, t_stack_node *cheapest_node,
 		char stack_name)
 {

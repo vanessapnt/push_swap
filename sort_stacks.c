@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:08:41 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 14:50:16 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/21 14:10:22 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,25 @@ void	push_a_to_b(t_stack_node **a, t_stack_node **b)
 	ft_pb(b, a);
 }
 
+//b is already ready
 void	push_b_to_a(t_stack_node **a, t_stack_node **b)
 {
-	//b is already ready
 	prep_for_push(a, (*b)->target, 'a');
 	ft_pa(a, b);
 }
 
+//pb two times
+//pb the cheapest
+//b is sorted (except the smalest that are on top) so we dont need costs
 void	sort_stacks(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;
 
 	len_a = ft_stack_length(*a);
-	// pb two times
 	if (len_a-- > 3 && !stack_sorted(*a))
 		ft_pb(b, a);
 	if (len_a-- > 3 && !stack_sorted(*a))
 		ft_pb(b, a);
-	// pb the cheapest
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_members_a(*a, *b);
@@ -68,7 +69,6 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 	ft_tiny_sort(a);
 	while (*b)
 	{
-		// b is sorted so we dont need costs (except the smalest that are on top)
 		init_members_b(*a, *b);
 		push_b_to_a(a, b);
 	}

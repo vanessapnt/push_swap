@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:55:09 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/13 14:26:25 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/21 14:11:21 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_stack_node	*find_min_node(t_stack_node *head)
 	}
 	return (min);
 }
+
 t_stack_node	*find_last_node(t_stack_node *head)
 {
 	t_stack_node	*curr;
@@ -58,7 +59,7 @@ t_stack_node	*find_last_node(t_stack_node *head)
 
 int	ft_stack_length(t_stack_node *head)
 {
-	int			len;
+	int				len;
 	t_stack_node	*curr;
 
 	len = 0;

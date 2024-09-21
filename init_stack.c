@@ -6,26 +6,25 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 15:57:14 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/21 14:00:09 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// first char must be '-', '+' or digit
+// second char must be digit
+// only digits following
 static int	error_syntax(char *s)
 {
-	// first char must be '-', '+' or digit
 	if (!(*s == '-' || *s == '+' || (*s >= '0' && *s <= '9')))
 		return (1);
-	// second char must be digit
 	if ((*s == '-' || *s == '+') && !(s[1] >= '0' && s[1] <= '9'))
 		return (1);
 	if (*s == '-' || *s == '+')
 		s++;
-	// only digits following
 	while (*s)
 	{
-
 		if (!(*s >= '0' && *s <= '9'))
 			return (1);
 		s++;
