@@ -12,11 +12,25 @@
 
 #include "push_swap.h"
 
+void	handle_split(char *argv, t_stack_node **a)
+{
+	char	**split_result;
+	int		i;
+
+	split_result = ft_split(argv, ' ');
+	if (!split_result)
+		exit(1);
+	init_stack_a(a, split_result);
+	i = 0;
+	while (split_result[i])
+		free(split_result[i++]); 
+	free(split_result);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-	char			**split_result;
 	int				i;
 
 	a = NULL;
@@ -24,18 +38,7 @@ int	main(int argc, char **argv)
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-	{
-		split_result = ft_split(argv[1], ' ');
-		if (!split_result)
-			exit(1);
-		init_stack_a(&a, split_result);
-		i = 0;
-		while (split_result[i])
-			i++;
-		while (--i >= 0)
-			free(split_result[i]);
-		free(split_result);
-	}
+		handle_split(argv[1], &a);
 	else
 		init_stack_a(&a, argv + 1);
 	if (!stack_sorted(a))
