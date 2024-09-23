@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 09:57:39 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:00:35 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <limits.h>
 # include <stdbool.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct t_stack_node
 {
@@ -30,19 +30,19 @@ typedef struct t_stack_node
 }						t_stack_node;
 
 // Commands
-void					ft_sa(t_stack_node **a);
-void					ft_sb(t_stack_node **b);
-void					ft_ss(t_stack_node **a, t_stack_node **b);
-void					ft_pa(t_stack_node **a, t_stack_node **b);
-void					ft_pb(t_stack_node **b, t_stack_node **a);
-void					ft_ra(t_stack_node **a);
-void					ft_rb(t_stack_node **b);
-void					ft_rr(t_stack_node **a, t_stack_node **b);
+void					ft_sa(t_stack_node **a, bool print);
+void					ft_sb(t_stack_node **b, bool print);
+void					ft_ss(t_stack_node **a, t_stack_node **b, bool print);
+void					ft_pa(t_stack_node **a, t_stack_node **b, bool print);
+void					ft_pb(t_stack_node **b, t_stack_node **a, bool print);
+void					ft_ra(t_stack_node **a, bool print);
+void					ft_rb(t_stack_node **b, bool print);
+void					ft_rr(t_stack_node **a, t_stack_node **b, bool print);
 void					rotate_both(t_stack_node **a, t_stack_node **b,
 							t_stack_node *cheapest_node);
-void					ft_rra(t_stack_node **a);
-void					ft_rrb(t_stack_node **b);
-void					ft_rrr(t_stack_node **a, t_stack_node **b);
+void					ft_rra(t_stack_node **a, bool print);
+void					ft_rrb(t_stack_node **b, bool print);
+void					ft_rrr(t_stack_node **a, t_stack_node **b, bool print);
 void					reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 							t_stack_node *cheapest_node);
 

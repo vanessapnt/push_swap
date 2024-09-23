@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/23 13:39:35 by varodrig         ###   ########.fr       */
+/*   Created: 2024/09/21 16:02:26 by varodrig          #+#    #+#             */
+/*   Updated: 2024/09/23 13:53:18 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	handle_split(char *argv, t_stack_node **a)
+static void	handle_split(char *argv, t_stack_node **a)
 {
 	char	**split_result;
 	int		i;
@@ -27,11 +27,33 @@ void	handle_split(char *argv, t_stack_node **a)
 	free(split_result);
 }
 
+static void	ft_checker(char *str, t_stack_node **a, t_stack_node **b)
+{
+	char	*commands[11];
+	int		command_index;
+
+	init_commands(commands);
+	str = get_next_line(0);
+	while (str)
+	{
+		command_index = ft_strcmp(commands, str);
+		if (command_index > -1)
+			execute_command(command_index, a, b);
+		else
+		{
+			printf("Error\n");
+			break ;
+		}
+		str = get_next_line(0);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
 	int				i;
+	char			*str;
 
 	a = NULL;
 	b = NULL;
@@ -41,15 +63,11 @@ int	main(int argc, char **argv)
 		handle_split(argv[1], &a);
 	else
 		init_stack_a(&a, argv + 1);
-	if (!stack_sorted(a))
-	{
-		if (ft_stack_length(a) == 2)
-			ft_sa(&a, true);
-		else if (ft_stack_length(a) == 3)
-			ft_tiny_sort(&a);
-		else
-			sort_stacks(&a, &b);
-	}
+	ft_checker(str, &a, &b);
+	if (!b && (stack_sorted(a)))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 	ft_free_stack(&a);
 	return (0);
 }

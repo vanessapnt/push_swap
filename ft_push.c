@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:00:33 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 11:42:02 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:49:50 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,16 @@ static void	ft_push(t_stack_node **dest, t_stack_node **src)
 	}
 }
 
-void	ft_pa(t_stack_node **a, t_stack_node **b)
+void	ft_pa(t_stack_node **a, t_stack_node **b, bool print)
 {
 	ft_push(a, b);
-	printf("pa\n");
+	if (print)
+		write(1, "pa\n", 3);
 }
 
-void	ft_pb(t_stack_node **b, t_stack_node **a)
+void	ft_pb(t_stack_node **b, t_stack_node **a, bool print)
 {
 	ft_push(b, a);
-	printf("pb\n");
+	if (print)
+		write(1, "pb\n", 3);
 }

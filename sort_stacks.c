@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 12:08:41 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 14:10:22 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:41:18 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	push_a_to_b(t_stack_node **a, t_stack_node **b)
 		reverse_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
 	prep_for_push(b, cheapest_node->target, 'b');
-	ft_pb(b, a);
+	ft_pb(b, a, true);
 }
 
 //b is already ready
 void	push_b_to_a(t_stack_node **a, t_stack_node **b)
 {
 	prep_for_push(a, (*b)->target, 'a');
-	ft_pa(a, b);
+	ft_pa(a, b, true);
 }
 
 //pb two times
@@ -58,9 +58,9 @@ void	sort_stacks(t_stack_node **a, t_stack_node **b)
 
 	len_a = ft_stack_length(*a);
 	if (len_a-- > 3 && !stack_sorted(*a))
-		ft_pb(b, a);
+		ft_pb(b, a, true);
 	if (len_a-- > 3 && !stack_sorted(*a))
-		ft_pb(b, a);
+		ft_pb(b, a, true);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
 		init_members_a(*a, *b);

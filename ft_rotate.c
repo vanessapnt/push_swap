@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:01:54 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 13:52:08 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:52:23 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,31 @@ static void	ft_rotate(t_stack_node **head)
 	}
 }
 
-void	ft_ra(t_stack_node **a)
+void	ft_ra(t_stack_node **a, bool print)
 {
 	ft_rotate(a);
-	printf("ra\n");
+	if (print)
+		write(1, "ra\n", 3);
 }
 
-void	ft_rb(t_stack_node **b)
+void	ft_rb(t_stack_node **b, bool print)
 {
 	ft_rotate(b);
-	printf("rb\n");
+	if (print)
+		write(1, "rb\n", 3);
 }
 
-void	ft_rr(t_stack_node **a, t_stack_node **b)
+void	ft_rr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	ft_rotate(a);
 	ft_rotate(b);
-	printf("rr\n");
+	if (print)
+		write(1, "rr\n", 3);
 }
 
 void	rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest_node)
 {
 	while (*a != cheapest_node && *b != cheapest_node->target)
-		ft_rr(a, b);
+		ft_rr(a, b, true);
 }

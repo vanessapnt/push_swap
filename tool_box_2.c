@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:54:55 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 14:10:48 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:42:31 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	min_on_top(t_stack_node **a)
 
 	min = find_min_node(*a);
 	while (*a != min)
-		ft_rra(a);
+		ft_rra(a, true);
 }
 
 void	prep_for_push(t_stack_node **head, t_stack_node *cheapest_node,
@@ -79,16 +79,16 @@ void	prep_for_push(t_stack_node **head, t_stack_node *cheapest_node,
 		if (stack_name == 'a')
 		{
 			if (cheapest_node->above_median)
-				ft_ra(head);
+				ft_ra(head, true);
 			else
-				ft_rra(head);
+				ft_rra(head, true);
 		}
 		else if (stack_name == 'b')
 		{
 			if (cheapest_node->above_median)
-				ft_rb(head);
+				ft_rb(head, true);
 			else
-				ft_rrb(head);
+				ft_rrb(head, true);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:08:27 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/17 11:42:18 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:51:55 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,28 +29,31 @@ static void	ft_reverse_rotate(t_stack_node **head)
 	}
 }
 
-void	ft_rra(t_stack_node **a)
+void	ft_rra(t_stack_node **a, bool print)
 {
 	ft_reverse_rotate(a);
-	printf("rra\n");
+	if (printf)
+		write(1, "rra\n", 4);
 }
 
-void	ft_rrb(t_stack_node **b)
+void	ft_rrb(t_stack_node **b, bool print)
 {
 	ft_reverse_rotate(b);
-	printf("rrb\n");
+	if (print)
+		write(1, "rrb\n", 4);
 }
 
-void	ft_rrr(t_stack_node **a, t_stack_node **b)
+void	ft_rrr(t_stack_node **a, t_stack_node **b, bool print)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
-	printf("rrr\n");
+	if (print)
+		write(1, "rrr\n", 4);
 }
 
 void	reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 		t_stack_node *cheapest_node)
 {
 	while (*a != cheapest_node && *b != cheapest_node->target)
-		ft_rrr(a, b);
+		ft_rrr(a, b, true);
 }
