@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:08:27 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/23 13:51:55 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:34:51 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ft_reverse_rotate(t_stack_node **head)
 void	ft_rra(t_stack_node **a, bool print)
 {
 	ft_reverse_rotate(a);
-	if (printf)
+	if (print)
 		write(1, "rra\n", 4);
 }
 

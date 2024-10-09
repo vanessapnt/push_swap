@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/23 14:00:35 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:43:39 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ void					min_on_top(t_stack_node **a);
 void					prep_for_push(t_stack_node **head,
 							t_stack_node *cheapest_node, char stack_name);
 
+void	ft_putnbr_fd(int n, int fd);
 // Set members of the nodes
-t_stack_node			*find_cheapest(t_stack_node *a);
+t_stack_node *find_cheapest(t_stack_node *a);
 void					set_target_a(t_stack_node *a, t_stack_node *b);
 void					set_target_b(t_stack_node *a, t_stack_node *b);
 void					set_position(t_stack_node *head);

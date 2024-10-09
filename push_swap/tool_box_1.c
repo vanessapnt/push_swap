@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:55:09 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 14:11:21 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:45:20 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,13 @@ int	ft_stack_length(t_stack_node *head)
 void	ft_print_stack(t_stack_node *a)
 {
 	t_stack_node	*curr;
+	int				i;
 
 	curr = a;
 	while (curr != NULL)
 	{
-		printf("%d\n", curr->x);
+		i = curr->x;
+		ft_putnbr_fd(i, 1);
 		curr = curr->next;
 	}
 }

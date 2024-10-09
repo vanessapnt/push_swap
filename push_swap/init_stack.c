@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 14:00:09 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/09 19:37:43 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	error_double(t_stack_node *a, int nb)
 static void	free_errors(t_stack_node **a)
 {
 	ft_free_stack(a);
-	printf("Error\n");
+	write(1, "Error\n", 6);
 	exit(1);
 }
 
