@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 12:43:38 by varodrig          #+#    #+#             */
-/*   Updated: 2024/10/09 19:37:43 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/18 14:56:27 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // first char must be '-', '+' or digit
 // second char must be digit
 // only digits following
+
 static int	error_syntax(char *s)
 {
 	if (!(*s == '-' || *s == '+' || (*s >= '0' && *s <= '9')))

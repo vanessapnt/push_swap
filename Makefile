@@ -6,7 +6,7 @@
 #    By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 19:05:02 by varodrig          #+#    #+#              #
-#    Updated: 2024/10/09 19:46:41 by varodrig         ###   ########.fr        #
+#    Updated: 2024/10/18 13:02:20 by varodrig         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 ## ARGUMENTS
 
 NAME			= push_swap
-#NAMEB			= checker
 FLAGS			= -Wall -Wextra -Werror
 CC				= gcc
 

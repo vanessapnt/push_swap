@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/21 16:02:26 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/23 13:53:18 by varodrig         ###   ########.fr       */
+/*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
+/*   Updated: 2024/10/18 15:05:32 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-static void	handle_split(char *argv, t_stack_node **a)
+void	ft_error(void)
+{
+	write(1, "Error\n", 6);
+	exit(1);
+}
+
+void	handle_split(char *argv, t_stack_node **a)
 {
 	char	**split_result;
 	int		i;
 
 	split_result = ft_split(argv, ' ');
 	if (!split_result)
-		exit(1);
+		ft_error();
 	init_stack_a(a, split_result);
 	i = 0;
 	while (split_result[i])
@@ -27,47 +33,30 @@ static void	handle_split(char *argv, t_stack_node **a)
 	free(split_result);
 }
 
-static void	ft_checker(char *str, t_stack_node **a, t_stack_node **b)
-{
-	char	*commands[11];
-	int		command_index;
-
-	init_commands(commands);
-	str = get_next_line(0);
-	while (str)
-	{
-		command_index = ft_strcmp(commands, str);
-		if (command_index > -1)
-			execute_command(command_index, a, b);
-		else
-		{
-			printf("Error\n");
-			break ;
-		}
-		str = get_next_line(0);
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack_node	*a;
 	t_stack_node	*b;
-	int				i;
-	char			*str;
 
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1)
 		return (1);
+	if (argc == 2 && !argv[1][0])
+		ft_error();
 	else if (argc == 2)
 		handle_split(argv[1], &a);
 	else
 		init_stack_a(&a, argv + 1);
-	ft_checker(str, &a, &b);
-	if (!b && (stack_sorted(a)))
-		write(1, "OK\n", 3);
-	else
-		write(1, "KO\n", 3);
+	if (!stack_sorted(a))
+	{
+		if (ft_stack_length(a) == 2)
+			ft_sa(&a, true);
+		else if (ft_stack_length(a) == 3)
+			ft_tiny_sort(&a);
+		else
+			sort_stacks(&a, &b);
+	}
 	ft_free_stack(&a);
 	return (0);
 }
