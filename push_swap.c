@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 12:21:30 by varodrig          #+#    #+#             */
-/*   Updated: 2024/10/18 15:05:32 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:47:54 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(void)
 {
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -26,7 +26,7 @@ void	handle_split(char *argv, t_stack_node **a)
 	split_result = ft_split(argv, ' ');
 	if (!split_result)
 		ft_error();
-	init_stack_a(a, split_result);
+	init_stack_a_split(a, split_result);
 	i = 0;
 	while (split_result[i])
 		free(split_result[i++]);

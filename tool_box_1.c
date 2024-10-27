@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 13:55:09 by varodrig          #+#    #+#             */
-/*   Updated: 2024/10/09 19:45:20 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:49:23 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_stack_length(t_stack_node *head)
 	}
 	return (len);
 }
-
+/*
 void	ft_print_stack(t_stack_node *a)
 {
 	t_stack_node	*curr;
@@ -85,3 +85,4 @@ void	ft_print_stack(t_stack_node *a)
 		curr = curr->next;
 	}
 }
+*/

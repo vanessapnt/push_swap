@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 13:42:46 by varodrig          #+#    #+#             */
-/*   Updated: 2024/10/18 15:03:33 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:45:32 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct t_stack_node
+typedef struct s_stack_node
 {
 	int					x;
-	struct t_stack_node	*prev;
-	struct t_stack_node	*next;
+	struct s_stack_node	*prev;
+	struct s_stack_node	*next;
 	int					index;
 	bool				above_median;
-	struct t_stack_node	*target;
+	struct s_stack_node	*target;
 	int					push_cost;
 }						t_stack_node;
 
@@ -49,10 +49,13 @@ void					reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 // Push_Swap structure
 char					**ft_split(char *s, char c);
 void					init_stack_a(t_stack_node **a, char **argv);
-int						stack_sorted(t_stack_node *a);
-int						ft_stack_length(t_stack_node *head);
+void					init_stack_a_split(t_stack_node **a,
+							char **argv);
 void					ft_tiny_sort(t_stack_node **a);
-void					sort_stacks(t_stack_node **a, t_stack_node **b);
+int						error_syntax(char *s);
+int						error_double(t_stack_node *a, int nb);
+long					ft_atol(char *str);
+
 // void free_stack(t_stack_node **a);
 
 // Tool Box

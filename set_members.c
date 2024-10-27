@@ -6,7 +6,7 @@
 /*   By: varodrig <varodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 14:38:06 by varodrig          #+#    #+#             */
-/*   Updated: 2024/09/21 13:44:43 by varodrig         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:56:10 by varodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_stack_node	*find_cheapest(t_stack_node *a)
 	return (cheapest);
 }
 
+//target = closest smaller, if not max
 void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*reset_b;
@@ -55,6 +56,7 @@ void	set_target_a(t_stack_node *a, t_stack_node *b)
 	}
 }
 
+//target = the closest bigger, if not min
 void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*reset_a;
